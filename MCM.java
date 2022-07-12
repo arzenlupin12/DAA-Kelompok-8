@@ -43,6 +43,12 @@ public class MCM{
             ArrayList <int[][]> arr2 = MatrixChainOrder(values);
             int[][] a = arr2.get(0);
             int[][] b = arr2.get(1);
-        
+            System.out.println("\nMatrix Jumlah Perkalian : ");
+            for(int i = 1 ; i < a.length ; i++){
+                for(int j = 1; j < a[i].length ; j++){
+                    System.out.print(a[i][j]+"\t");
+                }
+                System.out.println();
+            }
     }
 }
