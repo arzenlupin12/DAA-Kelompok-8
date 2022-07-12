@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Stream;
 
 public class MCM{
 
@@ -38,6 +39,10 @@ public class MCM{
             System.out.println("Masukan Array p[] (Misal User Input = 5 3 8 9 19)");
             String input = br.nextLine();
             String[] splited = input.split(" ");
+            int[] values = Stream.of(splited).mapToInt(Integer::parseInt).toArray();
+            ArrayList <int[][]> arr2 = MatrixChainOrder(values);
+            int[][] a = arr2.get(0);
+            int[][] b = arr2.get(1);
         
     }
 }
