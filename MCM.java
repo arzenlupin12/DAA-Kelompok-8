@@ -34,6 +34,10 @@ public class MCM{
         return arrMCM;
     }
     public static void main(String[] args) {
+        Scanner br = new Scanner(System.in);
+            System.out.println("Masukan Array p[] (Misal User Input = 5 3 8 9 19)");
+            String input = br.nextLine();
+            String[] splited = input.split(" ");
         
     }
 }
