@@ -34,6 +34,16 @@ public class MCM{
         arrMCM.add(s);
         return arrMCM;
     }
+    public static void PrintOptimalParent(int s[][], int i, int j){
+        if(i==j){
+            System.out.print(Alphabet++);
+        }else{
+            System.out.print("(");
+            PrintOptimalParent(s, i, s[i][j]);
+            PrintOptimalParent(s, s[i][j]+1, j);
+            System.out.print(")");
+        }
+    }
     public static void main(String[] args) {
         Scanner br = new Scanner(System.in);
         System.out.println("Masukan Array p[] (Misal User Input = 5 3 8 9 19)");
@@ -58,8 +68,10 @@ public class MCM{
                 System.out.print(b[i][j]+"\t");
             }
             System.out.println();
-
         }
+        System.out.print("Optimal Parent : ");
+        PrintOptimalParent(b, 1, b.length-1);
+        br.close();
         
     }
 }
