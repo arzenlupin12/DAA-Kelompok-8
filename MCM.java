@@ -51,12 +51,14 @@ public class MCM{
             }
         System.out.println();
         }
+        //print tabel
         System.out.println("\nTabel K : ");
         for(int i = 1 ; i < b.length ; i++){
             for(int j = 1; j < b[i].length ; j++){
                 System.out.print(b[i][j]+"\t");
             }
             System.out.println();
+
         }
         
     }
