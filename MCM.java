@@ -5,22 +5,22 @@ public class MCM{
 
     static char Alphabet = 'A';
 
-    public static ArrayList MatrixChainOrder(int p[]){
+    public static ArrayList MatrixChainOrder(Integer p[]){
 
-        int n = p.length-1;
-        int m[][] = new int[n+1][n+1];
-        int s[][] = new int[n+1][n+1];
+        Integer n = p.length-1;
+        Integer m[][] = new Integer[n+1][n+1];
+        Integer s[][] = new Integer[n+1][n+1];
         
-        for (int i = 1; i <= n;  i++) {
+        for (Integer i = 1; i <= n;  i++) {
             m[i][i]=0;
         }
 
-        for(int l = 2 ; l <= n ; l++){
-            for(int i = 1 ; i <= n - l + 1 ; i++){
-                int j = i + l -1;
+        for(Integer l = 2 ; l <= n ; l++){
+            for(Integer i = 1 ; i <= n - l + 1 ; i++){
+                Integer j = i + l -1;
                 m[i][j] = Integer.MAX_VALUE;
-                for(int k = i ; k <= j-1;k++){
-                    int q = m[i][k] + m[k+1][j] + p[i-1] * p[k] * p[j];
+                for(Integer k = i ; k <= j-1;k++){
+                    Integer q = m[i][k] + m[k+1][j] + p[i-1] * p[k] * p[j];
                     if (q < m[i][j]){
                         m[i][j] = q;
                         s[i][j] = k;
@@ -29,12 +29,12 @@ public class MCM{
             }
         }
 
-        ArrayList <int[][]> arrMCM = new ArrayList<>();
+        ArrayList <Integer[][]> arrMCM = new ArrayList<>();
         arrMCM.add(m);
         arrMCM.add(s);
         return arrMCM;
     }
-    public static void PrintOptimalParent(int s[][], int i, int j){
+    public static void PrintOptimalParent(Integer s[][], Integer i, Integer j){
         if(i==j){
             System.out.print(Alphabet++);
         }else{
@@ -44,34 +44,73 @@ public class MCM{
             System.out.print(")");
         }
     }
-    public static void main(String[] args) {
-        Scanner br = new Scanner(System.in);
-        System.out.println("Masukan Array p[] (Misal User Input = 5 3 8 9 19)");
-        String input = br.nextLine();
-        String[] splited = input.split(" ");
-        int[] values = Stream.of(splited).mapToInt(Integer::parseInt).toArray();
-        ArrayList <int[][]> arr2 = MatrixChainOrder(values);
-        int[][] a = arr2.get(0);
-        int[][] b = arr2.get(1);
-
-        System.out.println("\nMatrix Jumlah Perkalian : ");
-        for(int i = 1 ; i < a.length ; i++){
-            for(int j = 1; j < a[i].length ; j++){
-                System.out.print(a[i][j]+"\t");
+    
+    public static void main(String[] args) throws Exception{
+        Scanner in = new Scanner(System.in);
+        Set <Integer> inputUser = new LinkedHashSet<>();
+        boolean userInput = false;
+        while(userInput == false){
+            try{
+                System.out.print("Masukan Jumlah Matrix yang Akan Dihitung : ");
+                Integer jumlahMatrix = in.nextInt();
+                in.nextLine();
+                String input[] = new String[jumlahMatrix];  
+                for (Integer i = 0; i < jumlahMatrix; i++) {
+                    System.out.print("Matrix ke "+(i+1)+" (Contoh Input : 30x35) :  ");               
+                    String str = in.nextLine();
+                    str = str.replaceAll("[a-zA-Z]", " ");
+                    input[i] = str;
+                }
+                for (Integer i = 0; i < input.length; i++) {
+                    String tmp = input[i];
+                    String spliited[] = tmp.split(" ");
+                    inputUser.add(Integer.parseInt(spliited[0]));
+                    inputUser.add(Integer.parseInt(spliited[1]));
+                }         
+                Integer[] values = new Integer[inputUser.size()];
+                inputUser.toArray(values);
+                ArrayList <Integer[][]> arr2 = MatrixChainOrder(values);
+                Integer a[][] = arr2.get(0);
+                Integer b[][] = arr2.get(1);
+                System.out.println("=============================================================");
+                System.out.println("\nMatrix Jumlah Perkalian : ");
+                for(Integer i = 1 ; i < a.length ; i++){
+                    for(Integer j = 1; j < a[i].length ; j++){
+                        if(a[i][j]==null){
+                            System.out.print(0+"\t");
+                        }else{
+                            System.out.print(a[i][j]+"\t");
+                        }
+                    }
+                    System.out.println();
+                }
+                System.out.println();
+                System.out.println("=============================================================");
+                System.out.println("\nTabel K : ");
+                for(Integer i = 1 ; i < b.length ; i++){
+                    for(Integer j = 1; j < b[i].length ; j++){
+                        if(b[i][j]==null){
+                            System.out.print(0+"\t");
+                        }else{
+                            System.out.print(b[i][j]+"\t");
+                        }
+                    }
+                    System.out.println();
+                }
+                System.out.println();
+                System.out.println("=============================================================");
+                System.out.print("Optimal Parent : ");
+                PrintOptimalParent(b, 1, b.length-1);
+                System.out.println();
+                System.out.println("=============================================================");
+                in.close();
+                userInput = true;
+            
+            }catch(Exception e){
+                System.out.println("Input Salah, Harap Masukan Kembali");
+                in.next();
+                
             }
-        System.out.println();
-        }
-        //print tabel
-        System.out.println("\nTabel K : ");
-        for(int i = 1 ; i < b.length ; i++){
-            for(int j = 1; j < b[i].length ; j++){
-                System.out.print(b[i][j]+"\t");
-            }
-            System.out.println();
-        }
-        System.out.print("Optimal Parent : ");
-        PrintOptimalParent(b, 1, b.length-1);
-        br.close();
-        
+        }        
     }
 }
