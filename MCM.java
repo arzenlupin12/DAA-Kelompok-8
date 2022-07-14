@@ -15,11 +15,11 @@ public class MCM{
             m[i][i]=0;
         }
 
-        for(Integer l = 2 ; l <= n ; l++){
-            for(Integer i = 1 ; i <= n - l + 1 ; i++){
+        for(int l = 2 ; l <= n ; l++){
+            for(int i = 1 ; i <= n - l + 1 ; i++){
                 Integer j = i + l -1;
                 m[i][j] = Integer.MAX_VALUE;
-                for(Integer k = i ; k <= j-1;k++){
+                for(int k = i ; k <= j-1;k++){
                     Integer q = m[i][k] + m[k+1][j] + p[i-1] * p[k] * p[j];
                     if (q < m[i][j]){
                         m[i][j] = q;
@@ -34,7 +34,7 @@ public class MCM{
         arrMCM.add(s);
         return arrMCM;
     }
-    public static void PrintOptimalParent(Integer s[][], Integer i, Integer j){
+    public static void PrintOptimalParent(Integer s[][], int i, int j){
         if(i==j){
             System.out.print(Alphabet++);
         }else{
@@ -55,13 +55,13 @@ public class MCM{
                 Integer jumlahMatrix = in.nextInt();
                 in.nextLine();
                 String input[] = new String[jumlahMatrix];  
-                for (Integer i = 0; i < jumlahMatrix; i++) {
+                for (int i = 0; i < jumlahMatrix; i++) {
                     System.out.print("Matrix ke "+(i+1)+" (Contoh Input : 30x35) :  ");               
                     String str = in.nextLine();
                     str = str.replaceAll("[a-zA-Z]", " ");
                     input[i] = str;
                 }
-                for (Integer i = 0; i < input.length; i++) {
+                for (int i = 0; i < input.length; i++) {
                     String tmp = input[i];
                     String spliited[] = tmp.split(" ");
                     inputUser.add(Integer.parseInt(spliited[0]));
@@ -74,8 +74,8 @@ public class MCM{
                 Integer b[][] = arr2.get(1);
                 System.out.println("=============================================================");
                 System.out.println("\nMatrix Jumlah Perkalian : ");
-                for(Integer i = 1 ; i < a.length ; i++){
-                    for(Integer j = 1; j < a[i].length ; j++){
+                for(int i = 1 ; i < a.length ; i++){
+                    for(int j = 1; j < a[i].length ; j++){
                         if(a[i][j]==null){
                             System.out.print(0+"\t");
                         }else{
@@ -87,8 +87,8 @@ public class MCM{
                 System.out.println();
                 System.out.println("=============================================================");
                 System.out.println("\nTabel K : ");
-                for(Integer i = 1 ; i < b.length ; i++){
-                    for(Integer j = 1; j < b[i].length ; j++){
+                for(int i = 1 ; i < b.length ; i++){
+                    for(int j = 1; j < b[i].length ; j++){
                         if(b[i][j]==null){
                             System.out.print(0+"\t");
                         }else{
