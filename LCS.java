@@ -30,6 +30,7 @@ public class LCS{
             }
         }
 
+        System.out.println("=============================================================================");
         System.out.println("Tabel C : ");
         for(int i = 0 ; i < c.length ; i++){
             for(int j = 0; j < c[i].length ; j++){
@@ -38,6 +39,7 @@ public class LCS{
             System.out.println();
         }
         
+        System.out.println("=============================================================================");
         System.out.println("Tabel B (Arah) : ");
         for(int i = 0 ; i < b.length; i++){
             for(int j = 0; j < b[i].length ; j++){
@@ -57,5 +59,19 @@ public class LCS{
         String Y[] = {"B","D","C","A","B","A"};
         LCS_Lenght(X, Y);
         
+    }
+
+    public static void Print_LCS(String[][] b, String[] X, int i, int j){
+        if( i==0 || j==0){
+            return;
+        }
+        if(b[i][j]=="\\"){
+            Print_LCS(b, X, i-1, j-1);
+            System.out.print(X[i-1]);
+        }else if(b[i][j]=="^"){
+            Print_LCS(b, X, i-1, j);
+        }else{
+            Print_LCS(b, X, i, j-1);
+        }
     }
 }
