@@ -60,6 +60,20 @@ public class LCS {
         return arrs;
     }
 
+    public static void Print_LCS(String[][] b, String[] X, int i, int j) {
+        if (i == 0 || j == 0) {
+            return;
+        }
+        if (b[i][j] == "\\") {
+            Print_LCS(b, X, i - 1, j - 1);
+            System.out.print(X[i - 1]+" ");
+        } else if (b[i][j] == "^") {
+            Print_LCS(b, X, i - 1, j);
+        } else {
+            Print_LCS(b, X, i, j - 1);
+        }
+    }
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.print("Masukan X : ");
@@ -72,23 +86,8 @@ public class LCS {
         String X[] = Input_X.split(" ");
         String Y[] = Input_Y.split(" ");
         ArrayList<String [][]> arr2 = LCS_Lenght(X, Y);
-
-        LCS_Lenght(X, Y);
+        System.out.print("Longest Common Subsequence dari " +Input_X+" adalah : ");
         Print_LCS(arr2.get(0), X, X.length, Y.length);
 
-    }
-
-    public static void Print_LCS(String[][] b, String[] X, int i, int j) {
-        if (i == 0 || j == 0) {
-            return;
-        }
-        if (b[i][j] == "\\") {
-            Print_LCS(b, X, i - 1, j - 1);
-            System.out.print(X[i - 1]);
-        } else if (b[i][j] == "^") {
-            Print_LCS(b, X, i - 1, j);
-        } else {
-            Print_LCS(b, X, i, j - 1);
-        }
-    }
+    }    
 }
