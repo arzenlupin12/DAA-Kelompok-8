@@ -61,9 +61,20 @@ public class LCS {
     }
 
     public static void main(String[] args) {
-        String X[] = {"A", "B", "C", "B", "D", "A", "B"};
-        String Y[] = {"B", "D", "C", "A", "B", "A"};
+        Scanner in = new Scanner(System.in);
+        System.out.print("Masukan X : ");
+        System.out.println("Contoh Masukan : A B C D E");
+        String Input_X = in.nextLine();
+        System.out.print("Masukan Y : ");
+        System.out.println("Contoh Masukan : A B C D E");
+        String Input_Y = in.nextLine();
+
+        String X[] = Input_X.split(" ");
+        String Y[] = Input_Y.split(" ");
+        ArrayList<String [][]> arr2 = LCS_Lenght(X, Y);
+
         LCS_Lenght(X, Y);
+        Print_LCS(arr2.get(0), X, X.length, Y.length);
 
     }
 
