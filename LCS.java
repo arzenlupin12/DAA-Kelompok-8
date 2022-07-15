@@ -60,9 +60,6 @@ public class LCS {
         return arrs;
     }
 
-}
-
-
     public static void main(String[] args) {
         String X[] = {"A", "B", "C", "B", "D", "A", "B"};
         String Y[] = {"B", "D", "C", "A", "B", "A"};
