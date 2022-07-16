@@ -59,7 +59,7 @@ public class MCM {
 
                 System.out.print("Matrix ke " + (1) + " (Contoh Input : 30x35) :  ");
                 String str = in.nextLine();
-                if (!str.contains("x")) {
+                while (!str.contains("x")) {
                     System.out.print("Mohon masukkan input yang benar : ");
                     str = in.nextLine();
                 }
@@ -70,6 +70,10 @@ public class MCM {
                 for (int i = 1; i < jumlahMatrix; i++) {
                     System.out.print("Matrix ke " + (i + 1) + " (Contoh Input : 30x35) :  ");
                     str = in.nextLine();
+                    while (!str.contains("x")) {
+                        System.out.print("Mohon masukkan input yang benar : ");
+                        str = in.nextLine();
+                    }
                     String[] temp3 = str.split("x", 2);
                     System.out.println(Arrays.toString(temp2));
                     System.out.println(Arrays.toString(temp3));
