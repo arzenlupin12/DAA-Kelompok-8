@@ -59,6 +59,10 @@ public class MCM {
 
                 System.out.print("Matrix ke " + (1) + " (Contoh Input : 30x35) :  ");
                 String str = in.nextLine();
+                if (!str.contains("x")) {
+                    System.out.print("Mohon masukkan input yang benar : ");
+                    str = in.nextLine();
+                }
                 String[] temp2 = str.split("x", 2);
                 str = str.replaceAll("[a-zA-Z]", " ");
                 input[0] = str;
@@ -73,7 +77,7 @@ public class MCM {
                         System.out.println("Mohon masukkan matriks dengan dimensi yang benar");
                         i--;
                     } else {
-                        temp2 = str.split("x ", 2);
+                        temp2 = str.split("x", 2);
                         str = str.replaceAll("[a-zA-Z]", " ");
                         input[i] = str;
                     }
