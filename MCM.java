@@ -75,8 +75,6 @@ public class MCM {
                         str = in.nextLine();
                     }
                     String[] temp3 = str.split("x", 2);
-                    System.out.println(Arrays.toString(temp2));
-                    System.out.println(Arrays.toString(temp3));
                     if (!temp2[1].equalsIgnoreCase(temp3[0])) {
                         System.out.println("Mohon masukkan matriks dengan dimensi yang benar");
                         i--;
